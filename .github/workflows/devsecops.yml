@@ -93,7 +93,6 @@ jobs:
         cd backend/api-gateway
         semgrep --config=auto --severity=ERROR
     
-
     - name: Validate env files
       run: |
         ls -la backend/users-service
@@ -118,7 +117,7 @@ jobs:
       uses: aquasecurity/trivy-action@0.20.0
       with:
         image-ref: users-service
-        severity: CRITICAL
+        severity: HIGH
         exit-code: 1
 
     - name: Trivy scan academic-service
