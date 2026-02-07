@@ -47,12 +47,11 @@ services:
     build: ../frontend    
     container_name: frontend
     ports:
-      - "5173:4173"
+      - "5173:80"
     depends_on:
       - api-gateway
     networks:
       - backend-net
-
 networks:
   backend-net:
     driver: bridge

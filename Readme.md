@@ -90,19 +90,16 @@ minikube service api-gateway
 minikube start
 # Trabajar con Docker
 eval $(minikube docker-env -u)
-
 # Trabajar Docker dentro Kubernetes
 1. minikube start --driver=docker
    eval $(minikube docker-env)
 2. minikube status
 3. kubectl config current-context
 4. kubectl get nodes
-
 ## Construir las imágenes
 docker build -t frontend:latest ../frontend
 kubectl get pods -n backend
 docker build -t users-service:latest ../backend/users-service
-
 
 ## Desplegar en Kubernetes
 kubectl apply -f k8s/namespace.yaml
@@ -113,3 +110,14 @@ kubectl apply -f k8s/frontend/
 
 # eliminar cluster
 minikube delete
+
+
+minikube start
+eval $(minikube docker-env)
+
+docker build -t users-service backend/users-service
+docker build -t academic-service backend/academic-service
+docker build -t api-gateway backend/api-gateway
+docker build -t frontend frontend
+
+kubectl apply -f k8s/
